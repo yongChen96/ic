@@ -56,12 +56,30 @@
             <artifactId>druid</artifactId>
             <version>1.1.23</version>
         </dependency>
+        <!-- Mysql end-->
+
+        <!-- Mybatis-plus start-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.3.2</version>
         </dependency>
-        <!-- Mysql end-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.30</version>
+        </dependency>
+        <!-- Mybatis-plus end-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

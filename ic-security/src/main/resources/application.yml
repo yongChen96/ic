@@ -13,4 +13,4 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
 ### mybatis-plus≈‰÷√
 mybatis-plus:
-  config-location: classpath:mapper/*.xml
+  config-location: classpath:mappers/*.xml
