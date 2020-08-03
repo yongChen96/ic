@@ -7,8 +7,6 @@ import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -21,10 +19,10 @@ public class MybatisPlusGeneratorConfig {
 
     public static void main(String[] args) {
         //需要生成得表
-        final String[] tableName = {"ic_role"};
+        final String[] tableName = {"t_user"};
 
         //包路径
-        final String packagePath = "com/example/icsecurity";
+        final String packagePath = "com.example.icsecurity";
 
         //要生成的类(请注掉不要的) controller  biz  service serviceImpl entity xml  dao
         Set<String> needClass = new HashSet<>();
@@ -32,7 +30,6 @@ public class MybatisPlusGeneratorConfig {
         needClass.add("service");
         needClass.add("serviceImpl");
         needClass.add("entity");
-        needClass.add("dto");
         needClass.add("xml");
         needClass.add("mapper");
 
@@ -41,14 +38,15 @@ public class MybatisPlusGeneratorConfig {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir(projectPath + "/src/main/java");
+        gc.setOutputDir(projectPath + "/ic-security/src/main/java");
         gc.setAuthor("yongchen");
         gc.setOpen(false);
-        // gc.setSwagger2(true); 实体属性 Swagger2 注解
+        // 实体属性 Swagger2 注解
+        gc.setSwagger2(true);
 
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
         gc.setMapperName("%sMapper");
-        gc.setXmlName("%s");
+        gc.setXmlName("%sMapper");
         gc.setServiceName("%sService");
         gc.setServiceImplName("%sServiceImpl");
         gc.setControllerName("%sController");
@@ -68,7 +66,7 @@ public class MybatisPlusGeneratorConfig {
         // 包路径
         pc.setParent(packagePath);
         // 表前缀
-        pc.setModuleName("t");
+//        pc.setModuleName("t");
         //文件包名
         pc.setMapper("mapper");
         pc.setEntity("entity");
@@ -109,7 +107,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                    return projectPath + "src/main/java/com/example/icsecurity/controller" + pc.getModuleName()
+                    return "./ic-security/src/main/java/com/example/icsecurity/controller"
                             + "/" + tableInfo.getControllerName() + StringPool.DOT_JAVA;
                 }
             });
@@ -119,7 +117,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                    return projectPath + "src/main/java/com/example/icsecurity/entity" + pc.getModuleName()
+                    return "./ic-security/src/main/java/com/example/icsecurity/entity"
                             + "/" + tableInfo.getEntityName() + StringPool.DOT_JAVA;
                 }
             });
@@ -129,7 +127,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                    return projectPath + "src/main/java/com/example/icsecurity/service" + pc.getModuleName()
+                    return "./ic-security/src/main/java/com/example/icsecurity/service"
                             + "/" + tableInfo.getServiceName() + StringPool.DOT_JAVA;
                 }
             });
@@ -139,7 +137,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                    return projectPath + "src/main/java/com/example/icsecurity/service/impl" + pc.getModuleName()
+                    return "./ic-security/src/main/java/com/example/icsecurity/service/impl"
                             + "/" + tableInfo.getServiceImplName() + StringPool.DOT_JAVA;
                 }
             });
@@ -149,7 +147,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                    return projectPath + "src/main/java/com/example/icsecurity/mapper" + pc.getModuleName()
+                    return "./ic-security/src/main/java/com/example/icsecurity/mapper"
                             + "/" + tableInfo.getMapperName() + StringPool.DOT_JAVA;
                 }
             });
@@ -159,7 +157,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                    return projectPath + "/src/main/resources/mappers/" + pc.getModuleName()
+                    return "./ic-security/src/main/resources/mappers/"
                             + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
                 }
             });
@@ -211,7 +209,7 @@ public class MybatisPlusGeneratorConfig {
         strategy.setInclude(tableName);
         strategy.setControllerMappingHyphenStyle(true);
         // 此处可以修改为您的表前缀
-        strategy.setTablePrefix(pc.getModuleName() + "_");
+        strategy.setTablePrefix("t_");
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
