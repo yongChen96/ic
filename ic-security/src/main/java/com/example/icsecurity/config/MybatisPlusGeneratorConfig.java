@@ -1,9 +1,12 @@
 package com.example.icsecurity.config;
 
+import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.po.TableFill;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
@@ -24,7 +27,7 @@ public class MybatisPlusGeneratorConfig {
         //包路径
         final String packagePath = "com.example.icsecurity";
 
-        //要生成的类(请注掉不要的) controller  biz  service serviceImpl entity xml  dao
+        //要生成的类(请注掉不要的) controller service serviceImpl entity xml mapper
         Set<String> needClass = new HashSet<>();
         needClass.add("controller");
         needClass.add("service");
@@ -43,6 +46,16 @@ public class MybatisPlusGeneratorConfig {
         gc.setOpen(false);
         // 实体属性 Swagger2 注解
         gc.setSwagger2(true);
+        // XML生成ResultMap
+        gc.setBaseResultMap(true);
+        // XML columList
+        gc.setBaseColumnList(true);
+        // 文件覆盖
+        gc.setFileOverride(true);
+        // 开启 activeRecord 模式
+        gc.setActiveRecord(true);
+        // XML 二级缓存
+        gc.setEnableCache(false);
 
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
         gc.setMapperName("%sMapper");
@@ -55,6 +68,7 @@ public class MybatisPlusGeneratorConfig {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
+        dsc.setDbType(DbType.MYSQL);
         dsc.setUrl("jdbc:mysql://112.74.161.0:3306/ic_database?useUnicode=true&useSSL=false&characterEncoding=utf8");
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
@@ -196,20 +210,21 @@ public class MybatisPlusGeneratorConfig {
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
-        strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        //你自己的父类实体,没有就不用设置!
-        //strategy.setSuperEntityClass();
+//        strategy.setColumnNaming(NamingStrategy.underline_to_camel);
+        // 你自己的父类实体,没有就不用设置!
+        // strategy.setSuperEntityClass();
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         // 公共父类 你自己的父类控制器,没有就不用设置!
-        //strategy.setSuperControllerClass();
+        // strategy.setSuperControllerClass();
         // 写于父类中的公共字段
-        strategy.setSuperEntityColumns("id");
+        // strategy.setSuperEntityColumns("id");
         // 需要生成的表
         strategy.setInclude(tableName);
         strategy.setControllerMappingHyphenStyle(true);
         // 此处可以修改为您的表前缀
         strategy.setTablePrefix("t_");
+//        strategy.setTableFillList()
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
