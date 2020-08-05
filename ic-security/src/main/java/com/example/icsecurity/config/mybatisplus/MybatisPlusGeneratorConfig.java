@@ -1,15 +1,16 @@
-package com.example.icsecurity.config;
+package com.example.icsecurity.config.mybatisplus;
 
 import com.baomidou.mybatisplus.annotation.DbType;
-import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
-import com.baomidou.mybatisplus.generator.config.po.TableFill;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+import com.example.icsecurity.config.mybatisplus.superclass.BaseController;
+import com.example.icsecurity.config.mybatisplus.superclass.SuperEntity;
+
 import java.util.*;
 
 /**
@@ -69,7 +70,7 @@ public class MybatisPlusGeneratorConfig {
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setDbType(DbType.MYSQL);
-        dsc.setUrl("jdbc:mysql://112.74.161.0:3306/ic_database?useUnicode=true&useSSL=false&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://112.74.161.0:3306/ic_database?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true");
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
@@ -120,7 +121,7 @@ public class MybatisPlusGeneratorConfig {
             focList.add(new FileOutConfig(templatePathController) {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
-                    // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                    // 自定义输出文件名
                     return "./ic-security/src/main/java/com/example/icsecurity/controller"
                             + "/" + tableInfo.getControllerName() + StringPool.DOT_JAVA;
                 }
@@ -140,7 +141,7 @@ public class MybatisPlusGeneratorConfig {
             focList.add(new FileOutConfig(templatePathService) {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
-                    // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                    // 自定义输出文件名
                     return "./ic-security/src/main/java/com/example/icsecurity/service"
                             + "/" + tableInfo.getServiceName() + StringPool.DOT_JAVA;
                 }
@@ -150,7 +151,7 @@ public class MybatisPlusGeneratorConfig {
             focList.add(new FileOutConfig(templatePathServiceImpl) {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
-                    // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                    // 自定义输出文件名
                     return "./ic-security/src/main/java/com/example/icsecurity/service/impl"
                             + "/" + tableInfo.getServiceImplName() + StringPool.DOT_JAVA;
                 }
@@ -160,7 +161,7 @@ public class MybatisPlusGeneratorConfig {
             focList.add(new FileOutConfig(templatePathMapper) {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
-                    // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                    // 自定义输出文件名
                     return "./ic-security/src/main/java/com/example/icsecurity/mapper"
                             + "/" + tableInfo.getMapperName() + StringPool.DOT_JAVA;
                 }
@@ -211,20 +212,26 @@ public class MybatisPlusGeneratorConfig {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
 //        strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        // 你自己的父类实体,没有就不用设置!
-        // strategy.setSuperEntityClass();
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
-        // 公共父类 你自己的父类控制器,没有就不用设置!
-        // strategy.setSuperControllerClass();
+        // 你自己的父类实体,没有就不用设置!
+        strategy.setSuperEntityClass(SuperEntity.class);
         // 写于父类中的公共字段
-        // strategy.setSuperEntityColumns("id");
+         strategy.setSuperEntityColumns(SuperEntity.ID);
+         strategy.setSuperEntityColumns(SuperEntity.CREATE_TIME);
+         strategy.setSuperEntityColumns(SuperEntity.CREATE_USER);
+         strategy.setSuperEntityColumns(SuperEntity.UPDATE_TIME);
+         strategy.setSuperEntityColumns(SuperEntity.UPDATE_USER);
+        // 公共父类 你自己的父类控制器,没有就不用设置!
+         strategy.setSuperControllerClass(BaseController.class);
+         // 开启TableFiled
+        strategy.setEntityTableFieldAnnotationEnable(true);
+
         // 需要生成的表
         strategy.setInclude(tableName);
         strategy.setControllerMappingHyphenStyle(true);
         // 此处可以修改为您的表前缀
         strategy.setTablePrefix("t_");
-//        strategy.setTableFillList()
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
