@@ -36,7 +36,7 @@ public class userDetailsServiceImpl implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        /*QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(new User().getNickName(), s);
         User user = userService.getOne(queryWrapper);
         if(null == user){
@@ -50,6 +50,7 @@ public class userDetailsServiceImpl implements UserDetailsService{
         for (Role role : roles) {
 
         }
-        return new org.springframework.security.core.userdetails.User(user.getNickName(), user.getPassword(), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN"));
+        return new org.springframework.security.core.userdetails.User(user.getNickName(), user.getPassword(), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN"));*/
+        return null;
     }
 }

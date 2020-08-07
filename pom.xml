@@ -19,6 +19,7 @@
 
     <modules>
         <module>ic-common</module>
+        <module>ic-eurake</module>
         <module>ic-security</module>
     </modules>
 
