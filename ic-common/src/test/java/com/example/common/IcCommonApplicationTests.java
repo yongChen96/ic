@@ -1,10 +1,10 @@
-package com.example.icsecurity;
+package com.example.common;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class IcSecurityApplicationTests {
+class IcCommonApplicationTests {
 
     @Test
     void contextLoads() {

@@ -2,15 +2,17 @@ server:
   port: 8123
 
 spring:
-  ### 数据库配置
+  redis:
+    database: 0
+    host: 112.74.161.0
+    port: 6379
+    password: 123456
   datasource:
     username: root
     password: root
     url: jdbc:mysql://112.74.161.0:3306/ic_database?serverTimezone=CTT&characterEncoding=utf8&useUnicode=true&useSSL=false&allowMultiQueries=true&nullCatalogMeansCurrent=true
-    # 配置数据源
     driver-class-name: com.mysql.cj.jdbc.Driver
-    # 使用druid连接池
     type: com.alibaba.druid.pool.DruidDataSource
-### mybatis-plus配置
+
 mybatis-plus:
-  config-location: classpath:mappers/*.xml
+  config-location: classpath:mapper/*/*.xml

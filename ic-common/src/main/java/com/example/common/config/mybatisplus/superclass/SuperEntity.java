@@ -1,4 +1,4 @@
-package com.example.icsecurity.config.mybatisplus.superclass;
+package com.example.common.config.mybatisplus.superclass;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -24,10 +24,10 @@ public class SuperEntity<T> implements Serializable, Cloneable {
     private static final long serialVersionUID = -8813694495536208357L;
 
     public static final String ID = "id";
-    public static final String CREATE_TIME = "createTime";
-    public static final String CREATE_USER = "createUser";
-    public static final String UPDATE_TIME = "updateTime";
-    public static final String UPDATE_USER = "updateUser";
+    public static final String CREATE_TIME = "create_time";
+    public static final String CREATE_USER = "create_user";
+    public static final String UPDATE_TIME = "update_time";
+    public static final String UPDATE_USER = "update_user";
 
     @TableId(value = "id", type = IdType.INPUT)
     @ApiModelProperty("主键")

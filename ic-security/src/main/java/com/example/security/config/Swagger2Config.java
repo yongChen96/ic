@@ -1,4 +1,4 @@
-package com.example.icsecurity.config;
+package com.example.security.config;
 
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.springframework.context.annotation.Bean;
@@ -29,7 +29,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.icsecurity.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.security.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

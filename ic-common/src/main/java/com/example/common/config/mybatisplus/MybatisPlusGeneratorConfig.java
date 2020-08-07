@@ -1,4 +1,4 @@
-package com.example.icsecurity.config.mybatisplus;
+package com.example.common.config.mybatisplus;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
@@ -8,8 +8,8 @@ import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import com.example.icsecurity.config.mybatisplus.superclass.BaseController;
-import com.example.icsecurity.config.mybatisplus.superclass.SuperEntity;
+import com.example.common.config.mybatisplus.superclass.BaseController;
+import com.example.common.config.mybatisplus.superclass.SuperEntity;
 
 import java.util.*;
 
@@ -23,14 +23,14 @@ public class MybatisPlusGeneratorConfig {
 
     public static void main(String[] args) {
         //需要生成得表
-        final String[] tableName = {"t_user"};
+        final String[] tableName = {"t_user_role","t_role_resource"};
 
         //包路径
-        final String packagePath = "com.example.icsecurity";
+        final String packagePath = "com.example.security";
 
         //要生成的类(请注掉不要的) controller service serviceImpl entity xml mapper
         Set<String> needClass = new HashSet<>();
-        needClass.add("controller");
+//        needClass.add("controller");
         needClass.add("service");
         needClass.add("serviceImpl");
         needClass.add("entity");
@@ -54,7 +54,7 @@ public class MybatisPlusGeneratorConfig {
         // 文件覆盖
         gc.setFileOverride(true);
         // 开启 activeRecord 模式
-        gc.setActiveRecord(true);
+        gc.setActiveRecord(false);
         // XML 二级缓存
         gc.setEnableCache(false);
 
@@ -122,7 +122,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名
-                    return "./ic-security/src/main/java/com/example/icsecurity/controller"
+                    return projectPath + "/ic-security/src/main/java/com/example/security/controller"
                             + "/" + tableInfo.getControllerName() + StringPool.DOT_JAVA;
                 }
             });
@@ -132,7 +132,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                    return "./ic-security/src/main/java/com/example/icsecurity/entity"
+                    return projectPath + "/ic-security/src/main/java/com/example/security/entity"
                             + "/" + tableInfo.getEntityName() + StringPool.DOT_JAVA;
                 }
             });
@@ -142,7 +142,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名
-                    return "./ic-security/src/main/java/com/example/icsecurity/service"
+                    return projectPath + "/ic-security/src/main/java/com/example/security/service"
                             + "/" + tableInfo.getServiceName() + StringPool.DOT_JAVA;
                 }
             });
@@ -152,7 +152,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名
-                    return "./ic-security/src/main/java/com/example/icsecurity/service/impl"
+                    return projectPath + "/ic-security/src/main/java/com/example/security/service/impl"
                             + "/" + tableInfo.getServiceImplName() + StringPool.DOT_JAVA;
                 }
             });
@@ -162,7 +162,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名
-                    return "./ic-security/src/main/java/com/example/icsecurity/mapper"
+                    return projectPath + "/ic-security/src/main/java/com/example/security/mapper"
                             + "/" + tableInfo.getMapperName() + StringPool.DOT_JAVA;
                 }
             });
@@ -172,7 +172,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                    return "./ic-security/src/main/resources/mappers/"
+                    return projectPath + "/ic-security/src/main/resources/mapper/base/"
                             + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
                 }
             });
@@ -211,17 +211,18 @@ public class MybatisPlusGeneratorConfig {
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
-//        strategy.setColumnNaming(NamingStrategy.underline_to_camel);
+        strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
+        strategy.setEntityBuilderModel(true);
         strategy.setRestControllerStyle(true);
         // 你自己的父类实体,没有就不用设置!
         strategy.setSuperEntityClass(SuperEntity.class);
         // 写于父类中的公共字段
-         strategy.setSuperEntityColumns(SuperEntity.ID);
-         strategy.setSuperEntityColumns(SuperEntity.CREATE_TIME);
+         strategy.setSuperEntityColumns(new String[]{SuperEntity.ID,SuperEntity.CREATE_TIME,SuperEntity.CREATE_USER,SuperEntity.UPDATE_TIME,SuperEntity.UPDATE_USER});
+         /*strategy.setSuperEntityColumns(SuperEntity.CREATE_TIME);
          strategy.setSuperEntityColumns(SuperEntity.CREATE_USER);
          strategy.setSuperEntityColumns(SuperEntity.UPDATE_TIME);
-         strategy.setSuperEntityColumns(SuperEntity.UPDATE_USER);
+         strategy.setSuperEntityColumns(SuperEntity.UPDATE_USER);*/
         // 公共父类 你自己的父类控制器,没有就不用设置!
          strategy.setSuperControllerClass(BaseController.class);
          // 开启TableFiled
