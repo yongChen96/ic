@@ -16,3 +16,10 @@ spring:
 
 mybatis-plus:
   config-location: classpath:mapper/*/*.xml
+
+eureka:
+  client:
+    defaultZone: http://112.74.161.0:8761/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 10
+    lease-renewal-interval-in-seconds: 1

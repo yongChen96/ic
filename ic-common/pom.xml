@@ -14,7 +14,7 @@
     <artifactId>ic-common</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ic-common</name>
-    <packaging>jar</packaging>
+<!--    <packaging>jar</packaging>-->
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -87,14 +87,4 @@
             </exclusions>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
