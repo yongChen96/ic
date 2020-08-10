@@ -1,5 +1,6 @@
 package com.example.common.utils;
 
+import com.example.common.constant.GlobalConstant;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.net.ssl.*;
@@ -27,7 +28,7 @@ public class HttpUtils {
      * @return 所代表远程资源的响应结果
      */
     public static String sendGet(String url, String param) {
-        return sendGet(url, param, Constants.UTF8);
+        return sendGet(url, param, GlobalConstant.UTF8);
     }
 
     /**

@@ -8,25 +8,32 @@ package com.example.common.enums;
  **/
 public enum ResultEnum {
 
-    SUCCESS_CODE("0","success"),
-    SUCCESS_FAIL("-1","fail");
+    /**
+     * 成功
+     */
+    SUCCESS_CODE(0, "success"),
+    /**
+     * 失败
+     */
+    SUCCESS_FAIL(-1, "fail");
 
 
-
-    private String code;
+    private Integer code;
     private String msg;
 
-    private ResultEnum(){}
-    private ResultEnum(String code, String msg){
+    private ResultEnum() {
+    }
+
+    private ResultEnum(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 

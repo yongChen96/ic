@@ -1,4 +1,4 @@
-package com.example.security.controller;
+package com.example.system.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +12,8 @@ import io.swagger.annotations.Api;
  * 角色资源信息表 前端控制器
  * </p>
  *
- * @author yongchen
- * @since 2020-08-07
+ * @author hyd
+ * @since 2020-08-10
  */
 @RestController
 @RequestMapping("/role-resource")

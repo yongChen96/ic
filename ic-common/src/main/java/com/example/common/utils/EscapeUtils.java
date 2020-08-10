@@ -1,6 +1,6 @@
 package com.example.common.utils;
 
-import com.example.security.filter.HtmlFilter;
+import com.example.common.filter.HtmlFilter;
 
 /**
  * @ClassName: EscapeUtils

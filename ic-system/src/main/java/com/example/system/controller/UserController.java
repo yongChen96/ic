@@ -1,4 +1,4 @@
-package com.example.security.controller;
+package com.example.system.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,15 +9,15 @@ import io.swagger.annotations.Api;
 
 /**
  * <p>
- * 用户角色表 前端控制器
+ * 用户信息表 前端控制器
  * </p>
  *
- * @author yongchen
- * @since 2020-08-07
+ * @author hyd
+ * @since 2020-08-10
  */
 @RestController
-@RequestMapping("/user-role")
-@Api(value = "UserRoleController", description = "用户角色表")
-public class UserRoleController extends BaseController {
+@RequestMapping("/user")
+@Api(value = "UserController", description = "用户信息表")
+public class UserController extends BaseController {
 
 }
