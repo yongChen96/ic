@@ -1,7 +1,11 @@
 package com.example.common.rest;
 
 import com.example.common.enums.ResultEnum;
+import com.example.common.utils.HttpStatus;
+import com.example.common.utils.StringUtils;
 import lombok.Data;
+
+import java.util.HashMap;
 
 /**
  * @ClassName: Result
@@ -9,67 +13,133 @@ import lombok.Data;
  * @Author: yongchen
  * @Date: 2020/8/5 16:36
  **/
-@Data
-public class Result<T> {
-    private String code;
-    private String msg;
-    private T data;
+public class Result extends HashMap<String, Object> {
+    private static final long serialVersionUID = 1L;
 
-    public Result(){}
+    /**
+     * 状态码
+     */
+    public static final String CODE_TAG = "code";
 
-    public Result(String msg){
-        this.code = ResultEnum.SUCCESS_CODE.getCode();
-        this.msg = msg;
+    /**
+     * 返回内容
+     */
+    public static final String MSG_TAG = "msg";
+
+    /**
+     * 数据对象
+     */
+    public static final String DATA_TAG = "data";
+
+    /**
+     * 初始化一个新创建的 Result 对象，使其表示一个空消息。
+     */
+    public Result() {
     }
 
-    public Result(String code, String msg){
-        this.code = code;
-        this.msg = msg;
+    /**
+     * 初始化一个新创建的 Result 对象
+     *
+     * @param code 状态码
+     * @param msg  返回内容
+     */
+    public Result(int code, String msg) {
+        super.put(CODE_TAG, code);
+        super.put(MSG_TAG, msg);
     }
 
-    public Result(String code, String msg, T data){
-        this.code = code;
-        this.msg = msg;
-        this.data = data;
+    /**
+     * 初始化一个新创建的 Result 对象
+     *
+     * @param code 状态码
+     * @param msg  返回内容
+     * @param data 数据对象
+     */
+    public Result(int code, String msg, Object data) {
+        super.put(CODE_TAG, code);
+        super.put(MSG_TAG, msg);
+        if (StringUtils.isNotNull(data)) {
+            super.put(DATA_TAG, data);
+        }
     }
 
-    public static <E> Result<E> success(){
-        return new Result(ResultEnum.SUCCESS_CODE.getCode(), ResultEnum.SUCCESS_CODE.getMsg());
+    /**
+     * 返回成功消息
+     *
+     * @return 成功消息
+     */
+    public static Result success() {
+        return Result.success("操作成功");
     }
 
-    public static <E> Result<E> success(String code, String msg){
-        return new Result(code, msg);
+    /**
+     * 返回成功数据
+     *
+     * @return 成功消息
+     */
+    public static Result success(Object data) {
+        return Result.success("操作成功", data);
     }
 
-    public static <E> Result<E> success(E data){
-        return new Result(ResultEnum.SUCCESS_CODE.getCode(), ResultEnum.SUCCESS_CODE.getMsg(),data);
+    /**
+     * 返回成功消息
+     *
+     * @param msg 返回内容
+     * @return 成功消息
+     */
+    public static Result success(String msg) {
+        return Result.success(msg, null);
     }
 
-    public static <E> Result<E> success(String code, String msg, E data){
-        return new Result(code, msg, data);
+    /**
+     * 返回成功消息
+     *
+     * @param msg  返回内容
+     * @param data 数据对象
+     * @return 成功消息
+     */
+    public static Result success(String msg, Object data) {
+        return new Result(HttpStatus.SUCCESS, msg, data);
     }
 
-    public static <E> Result<E> fail(){
-        return new Result(ResultEnum.SUCCESS_FAIL.getCode(), ResultEnum.SUCCESS_FAIL.getMsg());
+    /**
+     * 返回错误消息
+     *
+     * @return
+     */
+    public static Result error() {
+        return Result.error("操作失败");
     }
 
-    public static <E> Result<E> fail(String msg){
-        return new Result(msg);
+    /**
+     * 返回错误消息
+     *
+     * @param msg 返回内容
+     * @return 警告消息
+     */
+    public static Result error(String msg) {
+        return Result.error(msg, null);
     }
 
-    public static <E> Result<E> fail(String code, String msg){
-        return new Result(code, msg);
+    /**
+     * 返回错误消息
+     *
+     * @param msg  返回内容
+     * @param data 数据对象
+     * @return 警告消息
+     */
+    public static Result error(String msg, Object data) {
+        return new Result(HttpStatus.ERROR, msg, data);
     }
 
-    public static <E> Result<E> fail(E data){
-        return new Result(ResultEnum.SUCCESS_FAIL.getCode(), ResultEnum.SUCCESS_FAIL.getMsg(),data);
-    }
-
-    public static <E> Result<E> fail(String code, String msg, E data){
-        return new Result(code, msg, data);
-    }
-
-    public static <E> Result<E> result(String code, String msg){
-        return new Result(code, msg);
+    /**
+     * 返回错误消息
+     *
+     * @param code 状态码
+     * @param msg  返回内容
+     * @return 警告消息
+     */
+    public static Result error(int code, String msg) {
+        return new Result(code, msg, null);
     }
 }

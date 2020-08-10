@@ -21,5 +21,6 @@
         <module>ic-common</module>
         <module>ic-eurake</module>
         <module>ic-security</module>
+        <module>ic-system</module>
     </modules>
 </project>
