@@ -22,17 +22,4 @@
         <module>ic-eurake</module>
         <module>ic-security</module>
     </modules>
-
-    <!--<dependencies>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>ic-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>ic-security</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>-->
 </project>

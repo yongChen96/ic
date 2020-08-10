@@ -14,7 +14,7 @@
     <artifactId>ic-security</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ic-security</name>
-    <packaging>jar</packaging>
+<!--    <packaging>jar</packaging>-->
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -135,14 +135,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
