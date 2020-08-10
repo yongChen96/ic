@@ -1,6 +1,6 @@
 package com.example.common.utils;
 
-import com.sun.xml.internal.ws.util.UtilException;
+import com.example.common.exception.UtilException;
 
 import java.io.Serializable;
 import java.security.MessageDigest;
