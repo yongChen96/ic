@@ -17,7 +17,7 @@ import io.swagger.annotations.Api;
  */
 @RestController
 @RequestMapping("/role")
-@Api(value = "RoleController", description = "角色表")
+@Api(value = "RoleController", tags = "角色表")
 public class RoleController extends BaseController {
 
 }

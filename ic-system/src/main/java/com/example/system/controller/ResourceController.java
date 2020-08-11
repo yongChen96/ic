@@ -17,7 +17,7 @@ import io.swagger.annotations.Api;
  */
 @RestController
 @RequestMapping("/resource")
-@Api(value = "ResourceController", description = "资源表")
+@Api(value = "ResourceController", tags = "资源表")
 public class ResourceController extends BaseController {
 
 }

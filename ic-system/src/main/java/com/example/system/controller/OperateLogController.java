@@ -1,4 +1,4 @@
-package com.example.security.controller;
+package com.example.system.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +16,7 @@ import io.swagger.annotations.Api;
  * @since 2020-08-11
  */
 @RestController
-@RequestMapping("/operate-log")
+@RequestMapping("/operateLog")
 @Api(value = "OperateLogController", tags = "操作日志记录")
 public class OperateLogController extends BaseController {
 
