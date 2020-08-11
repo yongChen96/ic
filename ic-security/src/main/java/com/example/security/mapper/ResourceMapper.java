@@ -20,8 +20,8 @@ public interface ResourceMapper extends BaseMapper<SysResource> {
 
     /**
      * 根据用户id查询权限
-     * @param id
-     * @return
+     * @param id 用户id
+     * @return String
      */
     List<String> selectResourceByUserId(String id);
 }

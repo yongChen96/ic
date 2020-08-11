@@ -25,7 +25,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
 
     @Override
     public Set<String> selectRolePermissionByUserId(String id) {
-        List<Role> perms = roleMapper.selectBatchIds(Collections.singleton(id));
+        List<Role> perms = roleMapper.selectRolePermissionByUserId(id);
         Set<String> permsSet = new HashSet<>();
         for (Role perm : perms) {
             if (StringUtils.isNotNull(perm)) {

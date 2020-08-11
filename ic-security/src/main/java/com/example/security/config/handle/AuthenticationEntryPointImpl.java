@@ -7,6 +7,7 @@ import com.example.common.utils.HttpStatus;
 import com.example.common.utils.ServletUtils;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,7 @@ import java.io.Serializable;
  * @Author hzy
  * @Date 2020/8/10 16:00
  **/
+@Component
 public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint, Serializable {
     private static final long serialVersionUID = 1L;
 

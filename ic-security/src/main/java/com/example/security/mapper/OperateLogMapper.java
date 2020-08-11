@@ -2,6 +2,7 @@ package com.example.security.mapper;
 
 import com.example.security.entity.OperateLog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Repository;
  * @author hyd
  * @since 2020-08-11
  */
-@Repository
+@Mapper
 public interface OperateLogMapper extends BaseMapper<OperateLog> {
 
 }

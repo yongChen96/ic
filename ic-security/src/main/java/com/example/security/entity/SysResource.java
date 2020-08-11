@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Value;
 import lombok.experimental.Accessors;
 
 import java.util.Set;
@@ -43,6 +44,10 @@ public class SysResource extends SuperEntity<String> {
     @ApiModelProperty(value = "资源类型")
     @TableField("resource_type")
     private String resourceType;
+
+    @ApiModelProperty(value = "权限标识")
+    @TableField("resources_perms")
+    private String resourcesPerms;
 
     @ApiModelProperty(value = " 打开方式（0：当前页面 1：新页面）")
     @TableField("resource_open")

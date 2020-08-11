@@ -4,6 +4,7 @@ import com.example.security.entity.User;
 import com.example.security.entity.vo.UserVO;
 import com.example.security.service.ResourceService;
 import com.example.security.service.RoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -19,24 +20,41 @@ import java.util.Set;
 @Component
 public class PermissionService {
     @Resource
-    private ResourceService resourceService;
+    private RoleService roleService;
 
     @Resource
-    private RoleService roleService;
+    private ResourceService resourceService;
+
+    /**
+     * 获取角色数据权限
+     *
+     * @param user 用户信息
+     * @return 角色权限信息
+     */
+    public Set<String> getRolePermission(UserVO user) {
+        Set<String> roles = new HashSet<String>();
+        // 管理员拥有所有权限
+        if (user.isAdmin()) {
+            roles.add("admin");
+        } else {
+            roles.addAll(roleService.selectRolePermissionByUserId(user.getId()));
+        }
+        return roles;
+    }
 
     /**
      * 获取资源数据权限
      *
-     * @param userVO 用户实体
-     * @return set
+     * @param user 用户信息
+     * @return 菜单权限信息
      */
-    public Set<String> getRolesPermission(UserVO userVO) {
+    public Set<String> getResourcesPermission(UserVO user) {
         Set<String> perms = new HashSet<String>();
         // 管理员拥有所有权限
-        if (userVO.isAdmin()) {
+        if (user.isAdmin()) {
             perms.add("*:*:*");
         } else {
-            perms.addAll(resourceService.selectResourcePermsByUserId(userVO.getId()));
+            perms.addAll(resourceService.selectResourcePermsByUserId(user.getId()));
         }
         return perms;
     }

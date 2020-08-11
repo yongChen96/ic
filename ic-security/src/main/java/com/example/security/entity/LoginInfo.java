@@ -4,7 +4,9 @@ import com.example.common.config.mybatisplus.superclass.SuperEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.time.LocalDateTime;
+
 import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,14 +26,10 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("t_login_info")
-@ApiModel(value="LoginInfo对象", description="系统访问记录")
-public class LoginInfo extends SuperEntity {
+@ApiModel(value = "LoginInfo对象", description = "系统访问记录")
+public class LoginInfo extends SuperEntity<String> {
 
     private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "访问ID")
-    @TableId(value = "info_id", type = IdType.AUTO)
-    private Long infoId;
 
     @ApiModelProperty(value = "用户账号")
     @TableField("user_name")

@@ -53,6 +53,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     public UserDetails createLoginUser(UserVO userVO) {
-        return new LoginUser(userVO, permissionService.getRolesPermission(userVO));
+        return new LoginUser(userVO, permissionService.getResourcesPermission(userVO));
     }
 }

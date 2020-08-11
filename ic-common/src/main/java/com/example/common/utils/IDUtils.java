@@ -7,6 +7,11 @@ package com.example.common.utils;
  * @Date 2020/8/11 10:22
  **/
 public class IDUtils {
+    public static void main(String[] args) {
+        String s = fastSimpleUUID();
+        System.out.println(s + "----" + s.length());
+    }
+
     /**
      * 获取随机UUID
      *

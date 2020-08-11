@@ -25,5 +25,25 @@
         update_time,
         role_name, role_code, role_desc, role_status, del_state
     </sql>
+    <sql id="RoleSqlVO">
+          select distinct r.id,
+                        r.create_user,
+                        r.create_time,
+                        r.update_user,
+                        r.update_time,
+                        r.role_name,
+                        r.role_code,
+                        r.role_desc,
+                        r.role_status,
+                        r.del_state
+        from t_role r
+                 left join t_user_role ur on ur.role_id = r.id
+                 left join t_user u on u.id = ur.user_id
+--               left join sys_dept d on u.dept_id = d.dept_id
+    </sql>
+    <select id="selectRolePermissionByUserId" resultMap="BaseResultMap">
+        <include refid="RoleSqlVO"/>
+        where del_state = '0' and u.id = #{id}
+    </select>
 
 </mapper>

@@ -38,7 +38,7 @@ public class UserVO extends User implements Serializable {
     }
 
     public static boolean isAdmin(String id) {
-        return StringUtils.isNotNull(id) && "1".equals(id);
+        return StringUtils.isNotNull(id) && "d34ca6e450394532bda9575fb6061bca".equals(id);
     }
 
 

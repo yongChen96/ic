@@ -10,7 +10,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  */
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan("com.example.security.mapper")
+//@MapperScan("com.example.security.mapper")
 public class IcSecurityApplication {
 
     public static void main(String[] args) {

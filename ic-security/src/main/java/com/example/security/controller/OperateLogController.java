@@ -17,7 +17,7 @@ import io.swagger.annotations.Api;
  */
 @RestController
 @RequestMapping("/operate-log")
-@Api(value = "OperateLogController", description = "操作日志记录")
+@Api(value = "OperateLogController", tags = "操作日志记录")
 public class OperateLogController extends BaseController {
 
 }

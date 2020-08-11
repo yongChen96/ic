@@ -3,6 +3,7 @@ package com.example.security.mapper;
 import com.example.security.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.security.entity.vo.UserVO;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Repository;
  * @author hyd
  * @since 2020-08-10
  */
-@Repository
+@Mapper
 public interface UserMapper extends BaseMapper<User> {
 
     /**

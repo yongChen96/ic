@@ -13,6 +13,7 @@
         <result column="resource_name" property="resourceName" />
         <result column="resource_url" property="resourceUrl" />
         <result column="resource_type" property="resourceType" />
+        <result column="resources_perms" property="resourcesPerms" />
         <result column="resource_open" property="resourceOpen" />
         <result column="resource_status" property="resourceStatus" />
         <result column="resource_icon" property="resourceIcon" />
@@ -30,7 +31,14 @@
         parent_id, resource_name, resource_url, resource_type, resource_open, resource_status, resource_icon, resource_desc, del_state
     </sql>
     <select id="selectResourceByUserId" resultType="java.lang.String">
-
+        select distinct res.resources_perms
+        from t_resource res
+                 left join t_role_resource rm on res.id = rm.resource_id
+                 left join t_user_role ur on rm.role_id = ur.role_id
+                 left join t_role r on r.id = ur.role_id
+        where res.resource_status = 0
+          and r.role_status = 0
+          and ur.user_id = #{id}
     </select>
 
 </mapper>

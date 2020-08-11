@@ -5,6 +5,7 @@ import com.example.common.utils.HttpStatus;
 import com.example.common.utils.StringUtils;
 import com.example.security.entity.LoginUser;
 import lombok.extern.slf4j.Slf4j;
+import org.omg.CORBA.Environment;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -77,6 +78,6 @@ public class SecurityUtils {
      * @return 结果
      */
     public static boolean isAdmin(String id) {
-        return StringUtils.isNotEmpty(id) && "1".equals(id);
+        return StringUtils.isNotEmpty(id) && "d34ca6e450394532bda9575fb6061bca".equals(id);
     }
 }

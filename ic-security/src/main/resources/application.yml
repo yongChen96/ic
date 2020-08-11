@@ -15,7 +15,9 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
 
 mybatis-plus:
-  config-location: classpath:mapper/*/*.xml
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  type-aliases-package: com.example.**.entity
+
 
 eureka:
   client:
@@ -23,3 +25,12 @@ eureka:
   instance:
     lease-expiration-duration-in-seconds: 10
     lease-renewal-interval-in-seconds: 1
+
+# token配置
+token:
+  # 令牌自定义标识
+  header: token
+  # 令牌密钥
+  secret: abcdefghijklmnopqrstuvwxyz
+  # 令牌有效期（默认30分钟）
+  expireTime: 30
