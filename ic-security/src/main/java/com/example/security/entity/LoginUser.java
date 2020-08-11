@@ -1,6 +1,7 @@
 package com.example.security.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,6 +14,7 @@ import java.util.Set;
  * @Author hzy
  * @Date 2020/8/10 17:52
  **/
+@Data
 public class LoginUser implements UserDetails {
     private static final long serialVersionUID = 1L;
     /**

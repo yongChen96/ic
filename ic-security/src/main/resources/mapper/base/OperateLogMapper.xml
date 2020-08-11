@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.security.mapper.OperateLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.security.entity.OperateLog">
+        <result column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="business_type" property="businessType" />
+        <result column="method" property="method" />
+        <result column="request_method" property="requestMethod" />
+        <result column="operate_type" property="operateType" />
+        <result column="operate_name" property="operateName" />
+        <result column="dept_name" property="deptName" />
+        <result column="operate_url" property="operateUrl" />
+        <result column="operate_ip" property="operateIp" />
+        <result column="operate_location" property="operateLocation" />
+        <result column="operate_param" property="operateParam" />
+        <result column="json_result" property="jsonResult" />
+        <result column="status" property="status" />
+        <result column="error_msg" property="errorMsg" />
+        <result column="operate_time" property="operateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        title, business_type, method, request_method, operate_type, operate_name, dept_name, operate_url, operate_ip, operate_location, operate_param, json_result, status, error_msg, operate_time
+    </sql>
+
+</mapper>

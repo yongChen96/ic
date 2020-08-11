@@ -24,10 +24,10 @@ public class MybatisPlusGeneratorConfig {
 
     public static void main(String[] args) {
         //需要生成得表
-        final String[] tableName = {"t_resource","t_role","t_role_resource","t_user","t_user_role"};
+        final String[] tableName = {"t_login_info","t_operate_log"};
 
         //包路径
-        final String packagePath = "com.example.system";
+        final String packagePath = "com.example.security";
 
         //要生成的类(请注掉不要的) controller service serviceImpl entity xml mapper
         Set<String> needClass = new HashSet<>();
@@ -42,8 +42,8 @@ public class MybatisPlusGeneratorConfig {
         AutoGenerator mpg = new AutoGenerator();
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir(projectPath + "/ic-system/src/main/java");
+        String projectPath =System.getProperty("user.dir");
+        gc.setOutputDir(projectPath + "/ic-security/src/main/java");
         gc.setAuthor("hyd");
         gc.setOpen(false);
         // 实体属性 Swagger2 注解
@@ -123,7 +123,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名
-                    return projectPath + "/ic-system/src/main/java/com/example/system/controller"
+                    return projectPath + "/ic-security/src/main/java/com/example/security/controller"
                             + "/" + tableInfo.getControllerName() + StringPool.DOT_JAVA;
                 }
             });
@@ -133,7 +133,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                    return projectPath + "/ic-system/src/main/java/com/example/system/entity"
+                    return projectPath + "/ic-security/src/main/java/com/example/security/entity"
                             + "/" + tableInfo.getEntityName() + StringPool.DOT_JAVA;
                 }
             });
@@ -143,7 +143,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名
-                    return projectPath + "/ic-system/src/main/java/com/example/system/service"
+                    return projectPath + "/ic-security/src/main/java/com/example/security/service"
                             + "/" + tableInfo.getServiceName() + StringPool.DOT_JAVA;
                 }
             });
@@ -153,7 +153,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名
-                    return projectPath + "/ic-system/src/main/java/com/example/system/service/impl"
+                    return projectPath + "/ic-security/src/main/java/com/example/security/service/impl"
                             + "/" + tableInfo.getServiceImplName() + StringPool.DOT_JAVA;
                 }
             });
@@ -163,7 +163,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名
-                    return projectPath + "/ic-system/src/main/java/com/example/system/mapper"
+                    return projectPath + "/ic-security/src/main/java/com/example/security/mapper"
                             + "/" + tableInfo.getMapperName() + StringPool.DOT_JAVA;
                 }
             });
@@ -173,7 +173,7 @@ public class MybatisPlusGeneratorConfig {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                    return projectPath + "/ic-system/src/main/resources/mapper/base/"
+                    return projectPath + "/ic-security/src/main/resources/mapper/base/"
                             + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
                 }
             });
