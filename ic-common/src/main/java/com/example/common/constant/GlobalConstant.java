@@ -125,4 +125,9 @@ public class GlobalConstant {
      * 资源映射路径 前缀
      */
     public static final String RESOURCE_PREFIX = "/profile";
+
+    /**
+     * 防重提交 redis key
+     */
+    public static final String REPEAT_SUBMIT_KEY = "repeat_submit:";
 }

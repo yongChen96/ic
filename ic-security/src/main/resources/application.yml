@@ -1,6 +1,14 @@
 server:
   port: 8123
 
+danielle:
+  name: hyd
+  version: 1.0
+  copyright-year: 2020
+  profile: D:/app/uploadPath
+  addressEnabled: true
+  captchaType: math
+
 spring:
   redis:
     database: 0
