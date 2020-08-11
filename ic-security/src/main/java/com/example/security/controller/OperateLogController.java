@@ -1,4 +1,4 @@
-package com.example.system.controller;
+package com.example.security.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,15 +9,15 @@ import io.swagger.annotations.Api;
 
 /**
  * <p>
- * 用户角色表 前端控制器
+ * 操作日志记录 前端控制器
  * </p>
  *
  * @author hyd
- * @since 2020-08-10
+ * @since 2020-08-11
  */
 @RestController
-@RequestMapping("/user-role")
-@Api(value = "UserRoleController", tags = "用户角色表")
-public class UserRoleController extends BaseController {
+@RequestMapping("/operateLog")
+@Api(value = "OperateLogController", tags = "操作日志记录")
+public class OperateLogController extends BaseController {
 
 }

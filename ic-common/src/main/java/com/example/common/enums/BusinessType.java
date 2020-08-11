@@ -60,4 +60,14 @@ public enum BusinessType {
      * 清空数据
      */
     CLEAN,
+
+    /**
+     * 登录
+     */
+    LOGIN,
+
+    /**
+     * 验证码生成
+     */
+    CAPTCHA,
 }

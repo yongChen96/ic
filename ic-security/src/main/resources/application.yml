@@ -11,10 +11,13 @@ danielle:
 
 spring:
   redis:
-    database: 0
-    host: 112.74.161.0
+#    database: 0
+#    host: 112.74.161.0
+#    port: 6379
+#    password: 123456
+    host: localhost
     port: 6379
-    password: 123456
+    password:
   datasource:
     username: root
     password: root

@@ -1,4 +1,4 @@
-package com.example.system.swagger;
+package com.example.security.config;
 
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import com.github.xiaoymin.swaggerbootstrapui.annotations.EnableSwaggerBootstrapUI;
@@ -35,7 +35,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.system.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.security.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .globalOperationParameters(globalOperation());

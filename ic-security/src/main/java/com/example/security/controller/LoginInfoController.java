@@ -1,4 +1,4 @@
-package com.example.system.controller;
+package com.example.security.controller;
 
 import com.example.common.config.mybatisplus.superclass.BaseController;
 import io.swagger.annotations.Api;

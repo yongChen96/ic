@@ -130,4 +130,5 @@ public class GlobalConstant {
      * 防重提交 redis key
      */
     public static final String REPEAT_SUBMIT_KEY = "repeat_submit:";
+
 }
