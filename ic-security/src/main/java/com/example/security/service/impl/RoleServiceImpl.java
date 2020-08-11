@@ -1,10 +1,14 @@
 package com.example.security.service.impl;
 
+import com.example.common.utils.StringUtils;
 import com.example.security.entity.Role;
 import com.example.security.mapper.RoleMapper;
 import com.example.security.service.RoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.*;
 
 /**
  * <p>
@@ -16,5 +20,18 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
+    @Resource
+    private RoleMapper roleMapper;
 
+    @Override
+    public Set<String> selectRolePermissionByUserId(String id) {
+        List<Role> perms = roleMapper.selectBatchIds(Collections.singleton(id));
+        Set<String> permsSet = new HashSet<>();
+        for (Role perm : perms) {
+            if (StringUtils.isNotNull(perm)) {
+                permsSet.addAll(Arrays.asList(perm.getRoleCode().trim().split(",")));
+            }
+        }
+        return permsSet;
+    }
 }

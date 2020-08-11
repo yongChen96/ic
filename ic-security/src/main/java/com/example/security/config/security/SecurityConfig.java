@@ -1,4 +1,4 @@
-package com.example.security.security;
+package com.example.security.config.security;
 
 import com.example.security.config.handle.AuthenticationEntryPointImpl;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

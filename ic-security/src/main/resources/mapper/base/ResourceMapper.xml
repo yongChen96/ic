@@ -3,7 +3,7 @@
 <mapper namespace="com.example.security.mapper.ResourceMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.example.security.entity.Resource">
+    <resultMap id="BaseResultMap" type="com.example.security.entity.SysResource">
         <result column="id" property="id" />
         <result column="create_user" property="createUser" />
         <result column="create_time" property="createTime" />
@@ -29,5 +29,8 @@
         update_time,
         parent_id, resource_name, resource_url, resource_type, resource_open, resource_status, resource_icon, resource_desc, del_state
     </sql>
+    <select id="selectResourceByUserId" resultType="java.lang.String">
+
+    </select>
 
 </mapper>

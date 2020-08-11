@@ -4,20 +4,46 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.example.security.entity.User">
-        <result column="id" property="id" />
-        <result column="create_user" property="createUser" />
-        <result column="create_time" property="createTime" />
-        <result column="update_user" property="updateUser" />
-        <result column="update_time" property="updateTime" />
-        <result column="user_name" property="userName" />
-        <result column="nick_name" property="nickName" />
-        <result column="password" property="password" />
-        <result column="phone" property="phone" />
-        <result column="mail" property="mail" />
-        <result column="acc_status" property="accStatus" />
-        <result column="del_state" property="delState" />
+        <result column="id" property="id"/>
+        <result column="create_user" property="createUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="user_name" property="userName"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="mail" property="mail"/>
+        <result column="acc_status" property="accStatus"/>
+        <result column="del_state" property="delState"/>
     </resultMap>
-
+    <resultMap id="UserResultMap" type="com.example.security.entity.vo.UserVO">
+        <result column="id" property="id"/>
+        <result column="create_user" property="createUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="user_name" property="userName"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="mail" property="mail"/>
+        <result column="acc_status" property="accStatus"/>
+        <result column="del_state" property="delState"/>
+        <collection property="roles" javaType="java.util.List" resultMap="RoleResultMap"/>
+    </resultMap>
+    <resultMap id="RoleResultMap" type="com.example.security.entity.Role">
+        <result column="id" property="id"/>
+        <result column="create_user" property="createUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="role_name" property="roleName"/>
+        <result column="role_code" property="roleCode"/>
+        <result column="role_desc" property="roleDesc"/>
+        <result column="role_status" property="roleStatus"/>
+        <result column="del_state" property="delState"/>
+    </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id,
@@ -27,5 +53,31 @@
         update_time,
         user_name, nick_name, password, phone, mail, acc_status, del_state
     </sql>
+    <sql id="selectUserVo">
+        select u.id,
+               u.user_name,
+               u.nick_name,
+               u.password,
+               u.phone,
+               u.mail,
+               u.acc_status,
+               u.del_state,
+               u.create_user,
+               u.create_time,
+               u.update_user,
+               u.update_time,
+               r.id,
+               r.role_name,
+               r.role_code
+        from t_user u
+                 left join t_user_role ur on u.id = ur.user_id
+                 left join t_role r on r.id = ur.role_id
+
+    </sql>
+    <select id="selectByUserName" resultMap="UserResultMap">
+        <include refid="selectUserVo"/>
+        where 1 = 1
+        and u.user_name = #{username}
+    </select>
 
 </mapper>

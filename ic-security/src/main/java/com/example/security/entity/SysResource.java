@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.util.Set;
+
 /**
  * <p>
  * 资源表
@@ -22,7 +24,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @TableName("t_resource")
 @ApiModel(value="Resource对象", description="资源表")
-public class Resource extends SuperEntity<String> {
+public class SysResource extends SuperEntity<String> {
 
     private static final long serialVersionUID = 1L;
 

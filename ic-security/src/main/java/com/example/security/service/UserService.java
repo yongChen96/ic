@@ -2,6 +2,7 @@ package com.example.security.service;
 
 import com.example.security.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.security.entity.vo.UserVO;
 
 /**
  * <p>
@@ -18,5 +19,5 @@ public interface UserService extends IService<User> {
      * @param username 用户名
      * @return sysUser
      */
-    User selectByUserName(String username);
+    UserVO selectByUserName(String username);
 }

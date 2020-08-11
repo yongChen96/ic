@@ -3,6 +3,7 @@ package com.example.security.entity;
 import com.example.common.config.mybatisplus.superclass.SuperEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.example.common.utils.StringUtils;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -21,7 +22,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("t_user")
-@ApiModel(value="User对象", description="用户信息表")
+@ApiModel(value = "User对象", description = "用户信息表")
 public class User extends SuperEntity<String> {
 
     private static final long serialVersionUID = 1L;
@@ -53,6 +54,5 @@ public class User extends SuperEntity<String> {
     @ApiModelProperty(value = "删除标识（0：否  1：是）")
     @TableField("del_state")
     private String delState;
-
 
 }
